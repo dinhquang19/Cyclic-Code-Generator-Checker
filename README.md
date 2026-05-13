@@ -19,7 +19,7 @@ Một đa thức $g(x)$ được coi là đa thức sinh của mã vòng $C(l, k
 Project cung cấp 2 phiên bản mã nguồn C++ riêng biệt phục vụ cho các mục đích khác nhau:
 
 ### 1. Phiên bản tối giản chấm tự động (`checker_simple.cpp`)
-- **Mục đích:** Dành cho việc nộp bài trên các hệ thống chấm điểm tự động (như PTIT, Codeforces, HackerRank,...).
+- **Mục đích:** Dành cho việc nộp bài trên các hệ thống chấm điểm tự động (như CodePTIT).
 - **Hoạt động:** Chạy thuật toán ngầm một cách nhanh chóng.
 - **Output:** Chỉ in ra duy nhất `YES` (nếu hợp lệ) hoặc `NO` (nếu không hợp lệ) trên mỗi dòng.
 
