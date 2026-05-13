@@ -26,19 +26,4 @@ Project cung cấp 2 phiên bản mã nguồn C++ riêng biệt phục vụ cho 
 ### 2. Phiên bản mô phỏng trực quan (`checker_detailed.cpp`)
 - **Mục đích:** Dành cho việc debug, làm báo cáo bài tập lớn, hoặc học tập để hiểu rõ bản chất thuật toán.
 - **Hoạt động:** In ra toàn bộ quá trình đảo ngược đa thức, kiểm tra bậc, và đặc biệt là **Mô phỏng phép chia đa thức theo hàng dọc** (Long Division) trên hệ GF(2) bằng các phép toán XOR.
-- **Output:** Các dòng log tiếng Anh chuyên ngành mô tả chi tiết từng bước trượt đa thức và tính phần dư.
-
----
-
-## Bộ Test mẫu (Test Cases)
-Bạn có thể thử nghiệm chương trình với bộ test đa dạng góc cạnh sau:
-
-**Dữ liệu nhập (test.in):**
-```text
-7 4 1101
-7 4 1011
-7 4 1111
-7 3 1101
-15 11 11001
-15 11 10011
-3 1 111
+- **Output:** Các dòng log tiếng Anh mô tả chi tiết từng bước trượt đa thức và tính phần dư.
