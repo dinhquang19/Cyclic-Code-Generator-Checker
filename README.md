@@ -1,6 +1,6 @@
 # Cyclic Code Generator Checker (GF(2))
 
-Project kiểm tra tính hợp lệ của một đa thức sinh $g(x)$ cho Mã vòng tuyến tính (Linear Cyclic Code) $C(l, k)$ trên trường Galois GF(2) trong môn học Lý thuyết thông tin và Mã hóa.
+Project kiểm tra tính hợp lệ của một đa thức sinh $g(x)$ cho Mã vòng tuyến tính (Linear Cyclic Code) $C(l, k)$ trên trường Galois GF(2).
 
 ## Yêu cầu bài toán
 Một đa thức $g(x)$ được coi là đa thức sinh của mã vòng $C(l, k)$ nếu thỏa mãn ĐỒNG THỜI 2 điều kiện:
