@@ -27,3 +27,65 @@ Project cung cấp 2 phiên bản mã nguồn C++ riêng biệt phục vụ cho 
 - **Mục đích:** Dành cho việc debug, làm báo cáo bài tập lớn, hoặc học tập để hiểu rõ bản chất thuật toán.
 - **Hoạt động:** In ra toàn bộ quá trình đảo ngược đa thức, kiểm tra bậc, và đặc biệt là **Mô phỏng phép chia đa thức theo hàng dọc** (Long Division) trên hệ GF(2) bằng các phép toán XOR.
 - **Output:** Các dòng log tiếng Anh mô tả chi tiết từng bước trượt đa thức và tính phần dư.
+
+
+## Ví dụ minh họa (Usage Examples)
+
+Giả sử chúng ta cần kiểm tra xem đa thức $g(x) = 1 + x + x^3$ có phải là đa thức sinh hợp lệ cho mã vòng $C(7, 4)$ hay không.
+- Chiều dài từ mã: $l = 7$
+- Số bit tin: $k = 4$
+- Đa thức hệ số mũ tăng dần: `1101`
+
+Dưới đây là cách 2 phiên bản chương trình xử lý test case này:
+
+### 1. Phiên bản Simple (`checker_simple.cpp`)
+
+**Input:**
+```text
+7 4 1101
+```
+
+**Output:**
+
+```text
+YES
+```
+
+### 2. Phiên bản Detailed (`checker_detailed.cpp`)
+
+**Input:**
+
+```text
+7 4 1101
+```
+
+**Output:**
+
+```text
+========================================================
+[TEST] l = 7, k = 4 | Input g(x) = 1101 (Increasing Degree)
+=> Standard g(x) (Decreasing Degree): 1011
+=> Degree of g(x) = 3
+=> Dividend (x^7 + 1): 10000001
+--------------------------------------------------------
+GF(2) POLYNOMIAL DIVISION SIMULATION:
+
+10000001
+1011
+----
+  110001
+  1011
+  ----
+   11101
+   1011
+   ----
+    1011
+    1011
+    ----
+       0
+--------------------------------------------------------
+[+] CONCLUSION: Remainder = 0. g(x) IS a valid generator polynomial (YES).
+========================================================
+
+```
+
