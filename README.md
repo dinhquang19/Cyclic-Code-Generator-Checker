@@ -9,7 +9,7 @@ Một đa thức $g(x)$ được coi là đa thức sinh của mã vòng $C(l, k
 
 ## Định dạng Input / Output
 - **Input:** Liên tục gồm các dòng, mỗi dòng chứa 3 thông số: `l` (chiều dài từ mã), `k` (số bit tin), và `s` (chuỗi nhị phân biểu diễn đa thức theo **hệ số mũ tăng dần**, từ $x^0$ đến $x^n$).
-  - *Ví dụ:* `7 4 1101` (đại diện cho đa thức $1 + x + x^3$)
+  - *Ví dụ:* `7 4 1101` (đại diện cho $l = 7$, $k = 4$, đa thức $g(x) = 1 + x + x^3$)
 - **Output:** Tùy thuộc vào phiên bản chương trình mà bạn chạy (xem chi tiết bên dưới).
 
 ---
