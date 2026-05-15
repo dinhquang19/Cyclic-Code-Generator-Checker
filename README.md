@@ -33,10 +33,11 @@ Dự án cung cấp 3 phiên bản mã nguồn với các cấp độ tối ưu 
 - **Tính năng:** Tự động in ra toàn bộ quá trình đặt tính chia dọc đa thức trên Terminal, giúp người dùng theo dõi từng bước trượt bit và số dư trung gian.
 
 ### 3. `checker_bitset.cpp` (Bản Tối ưu hóa cao - Bitset Optimization)
+- **Đầu ra:** Cũng in ra `YES` hoặc `NO` nhưng nâng cấp hơn so với phiên bản `checker_simple.cpp`.
 - **Mục đích:** Xử lý các bộ test khổng lồ trong thời gian ngắn ~1s (Phù hợp khi yêu cầu tối ưu hóa cao/độ trễ thấp, hay trong các kì thi lớn ICPC, ...).
 - **Thuật toán:** Khai thác tính chất Word-level Parallelism của CPU 64-bit thông qua thư viện `std::bitset`. Việc nhân đa thức với $x^k$ được thay bằng phép dịch trái (`<<`), và việc trừ đa thức được thay bằng duy nhất một lệnh XOR phần cứng.
 - **Độ phức tạp:** $\approx O(\frac{L^2}{128})$.
-- Đây là phương pháp tối ưu hàng đầu khi làm việc với các bài toán Lý thuyết mã hóa yêu cầu xử lý các chuỗi bit dài lên đến $10^5$ hoặc $10^6$ phần tử.
+- Đây là phương pháp tối ưu khi làm việc với các bài toán Lý thuyết mã hóa yêu cầu xử lý các chuỗi bit dài lên đến $10^5$ hoặc $10^6$ phần tử.
 
 ---
 
