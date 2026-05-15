@@ -28,7 +28,7 @@ Project cung cấp 2 phiên bản mã nguồn C++ riêng biệt phục vụ cho 
 - **Hoạt động:** In ra toàn bộ quá trình đảo ngược đa thức, kiểm tra bậc, và đặc biệt là **Mô phỏng phép chia đa thức theo hàng dọc** (Long Division) trên hệ GF(2) bằng các phép toán XOR.
 - **Output:** Các dòng log tiếng Anh mô tả chi tiết từng bước trượt đa thức và tính phần dư.
 
-## Giải thích Thuật toán (Thuật toán Trượt và XOR)
+## Giải thích Thuật toán 
 
 Chương trình mô phỏng lại quá trình chia đa thức theo cột dọc (Long Division) trên hệ nhị phân. Do đặc thù của trường GF(2), phép cộng và phép trừ là hoàn toàn giống nhau và tương đương với phép toán **XOR** ($\oplus$). 
 
