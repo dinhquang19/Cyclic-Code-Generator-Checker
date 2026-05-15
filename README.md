@@ -22,7 +22,7 @@ Một đa thức $g(x)$ được coi là đa thức sinh hợp lệ của mã v�
 
 Dự án cung cấp 3 phiên bản mã nguồn với các cấp độ tối ưu và mục đích sử dụng khác nhau:
 
-### 1. `checker_simple.cpp` (Bản chấm tự động)
+### 1. `checker_simple.cpp` (Bản kiểm tra đơn giản)
 - **Mục đích:** Dành cho việc kiểm tra các bộ test đơn giản hay submit lên các hệ thống chấm điểm tự động (CodePtit, v.v.).
 - **Thuật toán:** Trượt và XOR (Mô phỏng Long Division bằng mảng).
 - **Độ phức tạp:** $O(L \times (L - K))$
