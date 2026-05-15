@@ -28,6 +28,37 @@ Project cung cấp 2 phiên bản mã nguồn C++ riêng biệt phục vụ cho 
 - **Hoạt động:** In ra toàn bộ quá trình đảo ngược đa thức, kiểm tra bậc, và đặc biệt là **Mô phỏng phép chia đa thức theo hàng dọc** (Long Division) trên hệ GF(2) bằng các phép toán XOR.
 - **Output:** Các dòng log tiếng Anh mô tả chi tiết từng bước trượt đa thức và tính phần dư.
 
+## Giải thích Thuật toán (Thuật toán Trượt và XOR)
+
+Chương trình mô phỏng lại quá trình chia đa thức theo cột dọc (Long Division) trên hệ nhị phân. Do đặc thù của trường GF(2), phép cộng và phép trừ là hoàn toàn giống nhau và tương đương với phép toán **XOR** ($\oplus$). 
+
+Thuật toán hoạt động theo 3 bước chính như sau:
+
+### Bước 1: Tiền xử lý đầu vào (Input Preprocessing)
+Đầu vào của chương trình yêu cầu đa thức $g(x)$ được nhập theo **hệ số mũ tăng dần** (từ $x^0$ đến $x^n$). 
+- Chương trình sử dụng hàm `reverse()` để đảo ngược chuỗi nhị phân về dạng **bậc giảm dần** (từ $x^n$ xuống $x^0$) nhằm thuận tiện cho việc chia đa thức.
+- Các số `0` vô nghĩa ở các bậc cao nhất (nếu người dùng nhập thừa) sẽ được tự động cắt bỏ để tính toán chính xác bậc của $g(x)$.
+
+### Bước 2: Kiểm tra Điều kiện 1 (Degree Check)
+Sau khi có chuỗi chuẩn, chương trình tính bậc `deg_g` bằng chiều dài chuỗi trừ đi 1. 
+- Nếu `deg_g != l - k`, chương trình lập tức kết luận `NO` và bỏ qua các bước sau.
+
+### Bước 3: Kiểm tra Điều kiện 2 (Mô phỏng phép chia GF(2))
+Chương trình tạo ra một mảng `div` biểu diễn đa thức bị chia $x^l + 1$ (gồm bit `1` ở đầu, $l-1$ bit `0` ở giữa, và bit `1` ở cuối). Sau đó, thực hiện phép chia "Trượt và XOR":
+
+1. **Duyệt mảng:** Vòng lặp chạy từ vị trí đầu tiên của mảng `div` đến vị trí $l - \text{deg}(g)$.
+2. **Kiểm tra bit cao nhất:** Tại mỗi vị trí $i$, nếu bit `div[i]` là `1`, điều đó có nghĩa là bậc hiện tại của số bị chia có thể triệt tiêu được.
+3. **Thực hiện XOR:** Đặt đa thức sinh $g(x)$ khớp với vị trí $i$ và thực hiện phép toán XOR từng bit để triệt tiêu bit `1` đó.
+4. **Kiểm tra phần dư:** Kết thúc vòng lặp, nếu tất cả các bit trong mảng `div` đều là `0`, phép chia không có dư (chấp nhận `YES`). Nếu còn bất kỳ bit `1` nào sót lại, đa thức không chia hết (từ chối `NO`).
+
+---
+
+## Phân tích Độ phức tạp (Complexity)
+
+- **Độ phức tạp thời gian (Time Complexity):** Ở trường hợp xấu nhất, vòng lặp "Trượt và XOR" chạy $k$ lần, mỗi lần thực hiện khoảng $l-k$ phép toán XOR. Suy ra thời gian tính toán là $O(k \times (l-k))$, xấp xỉ $O(l^2)$. Hoàn toàn đáp ứng được thời gian chạy tức thời với các bài toán có chiều dài từ mã $l$ thông thường.
+- **Độ phức tạp không gian (Space Complexity):** Thuật toán sử dụng mảng tĩnh để lưu trữ chuỗi bit với kích thước tuyến tính $O(l)$, cực kỳ tiết kiệm bộ nhớ.
+
+---
 
 ## Ví dụ minh họa (Usage Examples)
 
