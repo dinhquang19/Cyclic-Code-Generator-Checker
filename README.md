@@ -33,7 +33,7 @@ Dự án cung cấp 3 phiên bản mã nguồn với các cấp độ tối ưu 
 - **Tính năng:** Tự động in ra toàn bộ quá trình đặt tính chia dọc đa thức trên Terminal, giúp người dùng theo dõi từng bước trượt bit và số dư trung gian.
 
 ### 3. `checker_bitset.cpp` (Bản Tối ưu hóa cao - Bitset Optimization)
-- **Mục đích:** Xử lý các bộ test khổng lồ trong thời gian ngắn tiệm cận 0.1s (Phù hợp khi yêu cầu tối ưu hóa cao/độ trễ thấp, hay trong các kì thi lớn ICPC, ...).
+- **Mục đích:** Xử lý các bộ test khổng lồ trong thời gian ngắn ~1s (Phù hợp khi yêu cầu tối ưu hóa cao/độ trễ thấp, hay trong các kì thi lớn ICPC, ...).
 - **Thuật toán:** Khai thác tính chất Word-level Parallelism của CPU 64-bit thông qua thư viện `std::bitset`. Việc nhân đa thức với $x^k$ được thay bằng phép dịch trái (`<<`), và việc trừ đa thức được thay bằng duy nhất một lệnh XOR phần cứng.
 - **Độ phức tạp thực tế:** $\approx O\left(\frac{L \times (L-K)}{64}\right)$
 
@@ -41,7 +41,7 @@ Dự án cung cấp 3 phiên bản mã nguồn với các cấp độ tối ưu 
 
 ## Hướng dẫn Sử dụng
 
-### 1. Định dạng Input
+### Định dạng Input
 Chương trình đọc dữ liệu liên tục từ luồng Standard Input. Mỗi dòng testcase gồm 3 giá trị:
 - `l`: Chiều dài từ mã (Codeword length).
 - `k`: Số lượng bit tin (Message bits).
@@ -49,7 +49,7 @@ Chương trình đọc dữ liệu liên tục từ luồng Standard Input. Mỗ
 
 *Ví dụ:* `7 4 1101` (Tương ứng với $l=7, k=4$, và $g(x) = 1 + x + x^3$).
 
-Dưới đây là cách 2 phiên bản chương trình xử lý test case này:
+### Dưới đây là cách 2 phiên bản chương trình xử lý test case này:
 
 ### 1. Phiên bản Simple (`checker_simple.cpp`)
 
