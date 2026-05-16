@@ -27,7 +27,7 @@ Dự án cung cấp 2 phiên bản mã nguồn với các cấp độ tối ưu 
 - **Tính năng:** Tự động in ra toàn bộ quá trình đặt tính chia dọc đa thức trên Terminal, giúp người dùng theo dõi từng bước trượt bit và số dư trung gian.
 - **Độ phức tạp:** $\approx O(\frac{L^2}{2})$.
 
-### 2. `checker_simple.cpp` (Bản kiểm tra đơn giản, Tối ưu hóa cao - Bitset Optimization)
+### 2. `checker_simple.cpp` (Bản kiểm tra đơn giản - Tối ưu hóa cao)
 - **Đầu ra:** Chỉ in ra `YES` hoặc `NO`.
 - **Mục đích:** Xử lý các bộ test khổng lồ trong thời gian ngắn ~1s (Phù hợp khi yêu cầu tối ưu hóa cao/độ trễ thấp, hay trong các kì thi lớn ICPC, ...).
 - **Thuật toán:** Tối ưu hóa phép tính XOR bằng Bitset Optimization và Khai thác tính chất Word-level Parallelism của CPU 64-bit thông qua thư viện `std::bitset`. Việc nhân đa thức với $x^k$ được thay bằng phép dịch trái (`<<`), và việc trừ đa thức được thay bằng duy nhất một lệnh XOR phần cứng.
