@@ -20,22 +20,17 @@ Một đa thức $g(x)$ được coi là đa thức sinh hợp lệ của mã v�
 
 ## Cấu trúc Dự án
 
-Dự án cung cấp 3 phiên bản mã nguồn với các cấp độ tối ưu và mục đích sử dụng khác nhau:
+Dự án cung cấp 2 phiên bản mã nguồn với các cấp độ tối ưu và mục đích sử dụng khác nhau:
 
-### 1. `checker_simple.cpp` (Bản kiểm tra đơn giản)
-- **Mục đích:** Dành cho việc kiểm tra các bộ test đơn giản hay submit lên các hệ thống chấm điểm tự động (CodePtit, v.v.).
-- **Thuật toán:** Trượt và XOR (Mô phỏng Long Division bằng mảng).
-- **Độ phức tạp:** $\approx O(\frac{L^2}{2})$.
-- **Đầu ra:** Chỉ in ra `YES` hoặc `NO`.
-
-### 2. `checker_detailed.cpp` (Bản báo cáo & Debug)
+### 1. `checker_detailed.cpp` (Bản báo cáo & Debug)
 - **Mục đích:** Dành cho việc học thuật, làm báo cáo bài tập lớn hoặc debug.
 - **Tính năng:** Tự động in ra toàn bộ quá trình đặt tính chia dọc đa thức trên Terminal, giúp người dùng theo dõi từng bước trượt bit và số dư trung gian.
+- **Độ phức tạp:** $\approx O(\frac{L^2}{2})$.
 
-### 3. `checker_bitset.cpp` (Bản Tối ưu hóa cao - Bitset Optimization)
-- **Đầu ra:** Cũng in ra `YES` hoặc `NO` nhưng nâng cấp hơn so với phiên bản `checker_simple.cpp`.
+### 2. `checker_simple.cpp` (Bản kiểm tra đơn giản, Tối ưu hóa cao - Bitset Optimization)
+- **Đầu ra:** Chỉ in ra `YES` hoặc `NO` nhưng nâng cấp hơn so với phiên bản `checker_simple.cpp`.
 - **Mục đích:** Xử lý các bộ test khổng lồ trong thời gian ngắn ~1s (Phù hợp khi yêu cầu tối ưu hóa cao/độ trễ thấp, hay trong các kì thi lớn ICPC, ...).
-- **Thuật toán:** Khai thác tính chất Word-level Parallelism của CPU 64-bit thông qua thư viện `std::bitset`. Việc nhân đa thức với $x^k$ được thay bằng phép dịch trái (`<<`), và việc trừ đa thức được thay bằng duy nhất một lệnh XOR phần cứng.
+- **Thuật toán:** Tối ưu hóa phép tính XOR bằng Khai thác Bitset Optimization và tính chất Word-level Parallelism của CPU 64-bit thông qua thư viện `std::bitset`. Việc nhân đa thức với $x^k$ được thay bằng phép dịch trái (`<<`), và việc trừ đa thức được thay bằng duy nhất một lệnh XOR phần cứng.
 - **Độ phức tạp:** $\approx O(\frac{L^2}{128})$.
 - Đây là phương pháp tối ưu khi làm việc với các bài toán Lý thuyết mã hóa yêu cầu xử lý các chuỗi bit dài lên đến $10^5$ hoặc $10^6$ phần tử.
 
