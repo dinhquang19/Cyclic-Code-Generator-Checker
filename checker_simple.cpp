@@ -1,71 +1,74 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <algorithm>
+#include <bitset>
 
 using namespace std;
 
+// Giới hạn chiều dài từ mã (Có thể tùy chỉnh theo giới hạn của bài toán)
+// bitset yêu cầu kích thước phải được khai báo bằng hằng số tại compile-time
+const int MAX_L = 100005; 
+
 void solve() {
     int l, k;
-    string s; // s là đa thức sinh nhập vào (hệ số mũ tăng dần)
+    string s; // Đa thức nhập vào hệ số mũ tăng dần (vd: 1101 = 1 + x + x^3)
     
-    // Đọc đầu vào cho đến khi hết file (EOF)
+    // Đọc đầu vào cho đến khi hết file
     while (cin >> l >> k >> s) {
-        // 1. Đảo ngược chuỗi để đưa về bậc giảm dần (chuẩn toán học)
-        string g_str = s;
-        reverse(g_str.begin(), g_str.end());
+        // Xóa các số 0 vô nghĩa ở đuôi chuỗi (tương ứng bậc cao bị nhập thừa)
+        while (s.length() > 1 && s.back() == '0') {
+            s.pop_back();
+        }
         
-        // Loại bỏ các số 0 vô nghĩa ở bậc cao
-        int start_idx = 0;
-        while (start_idx < g_str.length() && g_str[start_idx] == '0') start_idx++;
-        if (start_idx == g_str.length()) g_str = "0";
-        else g_str = g_str.substr(start_idx);
+        int d = s.length() - 1; // Bậc của đa thức sinh g(x)
         
-        int deg_g = g_str.length() - 1;
-        
-        // Điều kiện 1: Bậc của g(x) phải bằng l - k
-        if (deg_g != l - k) {
+        // Điều kiện 1: Bậc phải đúng bằng l - k
+        if (d != l - k) {
             cout << "NO\n";
             continue;
         }
         
-        // Điều kiện 2: Khởi tạo đa thức bị chia (x^l + 1)
-        string dividend = "1";
-        for (int i = 0; i < l - 1; i++) dividend += "0";
-        dividend += "1";
-        
-        vector<int> div(dividend.length());
-        for (int i = 0; i < dividend.length(); ++i) div[i] = dividend[i] - '0';
-        
-        vector<int> g(g_str.length());
-        for (int i = 0; i < g_str.length(); ++i) g[i] = g_str[i] - '0';
-        
-        // Thực hiện phép chia đa thức GF(2) (Dùng XOR)
-        for (int i = 0; i <= l - deg_g; i++) {
-            if (div[i] == 1) {
-                for (int j = 0; j < g.size(); j++) {
-                    div[i+j] ^= g[j];
-                }
+        // Đa thức 1 (bậc 0) chia hết mọi x^l + 1
+        if (d == 0) {
+            cout << "YES\n";
+            continue;
+        }
+
+        // Khởi tạo đa thức bị chia D(x) = x^l + 1
+        bitset<MAX_L> D;
+        D.set(l); // Bật bit thứ l (x^l)
+        D.set(0); // Bật bit thứ 0 (x^0 = 1)
+
+        // Khởi tạo đa thức sinh G(x)
+        bitset<MAX_L> G;
+        for (int i = 0; i <= d; ++i) {
+            if (s[i] == '1') {
+                G.set(i); // Bật bit tương ứng với số mũ
             }
         }
-        
-        // Kiểm tra phần dư
-        bool isValid = true;
-        for (int i = 0; i < div.size(); i++) {
-            if (div[i] != 0) {
-                isValid = false; 
-                break;
+
+        // THUẬT TOÁN CHIA ĐA THỨC BẰNG BITSET
+        // Duyệt từ bậc cao nhất l xuống đến bậc d
+        for (int i = l; i >= d; --i) {
+            // Nếu phát hiện hệ số bậc i của D(x) là 1
+            if (D.test(i)) { 
+                // Nhân g(x) với x^(i-d) bằng toán tử dịch trái (<<)
+                // Sau đó trừ (XOR) trực tiếp vào D(x)
+                D ^= (G << (i - d)); 
             }
         }
-        
-        // In kết quả
-        if (isValid) cout << "YES\n";
-        else cout << "NO\n";
+
+        // Điều kiện 2: Kiểm tra phần dư.
+        // Hàm .none() trả về true nếu toàn bộ các bit trong D đều là 0
+        if (D.none()) {
+            cout << "YES\n";
+        } else {
+            cout << "NO\n";
+        }
     }
 }
 
 int main() {
-    // Tối ưu I/O cho C++
+    // Tối ưu hóa I/O
     ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
     solve();
