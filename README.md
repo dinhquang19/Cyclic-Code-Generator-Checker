@@ -128,3 +128,5 @@ Nhóm này tập trung vào các tình huống có thể gây lỗi runtime ho�
 
 ## Tổng kết
 Bộ test này không chỉ đơn thuần là dữ liệu mẫu, mà là một hệ thống đánh giá toàn diện từ tính đúng đắn về mặt toán học đến hiệu năng thực thi của mã nguồn. Việc vượt qua trọn vẹn 20 bộ test này đồng nghĩa với việc thuật toán đã đạt tới tiêu chuẩn tối ưu và có thể ứng dụng thực tế.
+
+Nếu bạn muốn thử submit với bộ test này, mình đã up lên Codeforces tại đây: [link](https://codeforces.com/group/YF7cqRzPwQ/contest/688579/problem/A)
