@@ -76,12 +76,13 @@ Sau khi biên dịch thành công, chạy file thực thi:
 
 Khi chương trình chạy, màn hình sẽ hiện ra:
 ```text
-========= Cyclic Code Generator Checker (GF(2)) =========
+================= Cyclic Code Generator Checker (GF(2)) =================
 SELECT CHECKER MODE:
 1. Simple Checker (Fast Output: YES/NO)
 2. Detailed Checker (Line-by-line Modulo)
-===========================================
-Enter your choice (1 or 2):
+3. Exit
+=========================================================================
+Enter your choice (1|2|3):
 ```
 Tiếp theo, bạn nhập `1` hoặc `2` để chọn chế độ hoạt động. Sau đó nhập dữ liệu theo đúng định dạng:
 
@@ -108,7 +109,12 @@ Màn hình sẽ hiển thị chính xác các bước như sau:
 ```
 ## 7. Logic thiết kế bộ dữ liệu thử nghiệm (Tests)
 
-Bộ test kiểm tra nhanh (YES/NO) với quy mô lớn bao gồm 20 trường hợp, được chia thành 4 nhóm:
+Bộ test kiểm tra nhanh (YES/NO) với định dạng:
+
+* **Input:** l, k, s.
+* **Output:** YES/NO.
+
+Bộ tests bao gồm 20 trường hợp, được chia thành 4 nhóm:
 
 ### Nhóm 1: Kiểm thử cơ bản (Small Cases)
 * **Mục tiêu:** Xác minh các kiến thức nền tảng về Lý thuyết mã hóa.
