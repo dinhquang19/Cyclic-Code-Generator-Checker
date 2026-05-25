@@ -7,9 +7,7 @@ using namespace std;
 
 const int MAXL = 100005;
 
-// ========================================================
-// HELPER FUNCTION: Chuyển chuỗi bit thành đa thức
-// ========================================================
+// Chuyển chuỗi bit thành đa thức
 string toPolynomial(const string& bin) {
     if (bin == "0" || bin.empty()) return "0";
     
@@ -37,23 +35,22 @@ string toPolynomial(const string& bin) {
     return res.empty() ? "0" : res;
 }
 
-// ========================================================
+
 // CLASS 1: Simple Checker (YES/NO)
-// ========================================================
 class SimpleChecker {
 public:
     void check(int l, int k, string s) {
         reverse(s.begin(), s.end());
         size_t start = s.find('1');
         if (start == string::npos) {
-            cout << "NO\n";
+            cout << "[-] NO\n";
             return;
         }
         s = s.substr(start);
         int deg = s.length() - 1;
 
         if (deg != l - k) {
-            cout << "NO\n";
+            cout << "[-] NO\n";
             return;
         }
 
@@ -78,21 +75,19 @@ public:
         }
 
         if (dividend.none()) {
-            cout << "YES\n";
+            cout << "[+] YES\n";
         } else {
-            cout << "NO\n";
+            cout << "[-] NO\n";
         }
     }
 };
 
-// ========================================================
-// CLASS 2: Detailed Checker (Line-by-line Modulo)
-// ========================================================
+// CLASS 2: Detailed Checker 
 class DetailedChecker {
 public:
     void check(int l, int k, string s) {
-        cout << "\n========================================================\n";
-        cout << "[TEST] l = " << l << ", k = " << k << " | Input g(x) = " << s << " (Increasing Degree)\n";
+        // cout << "\n========================================================\n";
+        cout << "\n[TEST] l = " << l << ", k = " << k << " | Input g(x) = " << s << " (Increasing Degree)\n";
         
         reverse(s.begin(), s.end());
         size_t start = s.find('1');
@@ -105,17 +100,17 @@ public:
         cout << "=> Degree of g(x) = " << deg << "\n";
         
         string dividend_bin = "1" + string(l - 1, '0') + "1";
-        cout << "=> Dividend (x^" << l << " + 1): " << toPolynomial(dividend_bin) << "\n";
-        cout << "--------------------------------------------------------\n";
+        cout << "=> Dividend (x^" << l << " + 1): " << "\n";
+        // cout << "--------------------------------------------------------\n";
         
         if (deg != l - k) {
             cout << "[-] DEGREE CONDITION FAILED: Expected l - k = " << l - k << ", but got " << deg << ".\n";
             cout << "[+] CONCLUSION: g(x) IS NOT a valid generator polynomial (NO).\n";
-            cout << "========================================================\n";
+            // cout << "========================================================\n";
             return;
         }
 
-        cout << "GF(2) POLYNOMIAL DIVISION SIMULATION (STEP-BY-STEP):\n\n";
+        cout << "\nGF(2) POLYNOMIAL DIVISION SIMULATION (STEP-BY-STEP):\n";
         
         string current = dividend_bin;
         
@@ -145,42 +140,40 @@ public:
         }
         
         cout << endl;
-        cout << "--------------------------------------------------------\n";
+        // cout << "--------------------------------------------------------\n";
         
         if (current == "0") {
             cout << "[+] CONCLUSION: Remainder = 0. g(x) IS a valid generator polynomial (YES).\n";
         } else {
             cout << "[-] CONCLUSION: Remainder != 0. g(x) IS NOT a valid generator polynomial (NO).\n";
         }
-        cout << "========================================================\n";
+        // cout << "========================================================\n";
     }
 };
 
-// ========================================================
-// HÀM MAIN
-// ========================================================
+// Hàm main
 int main() {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
-    system("cls");   // xóa màn hình Windows
+    system("cls");  
     SimpleChecker simple;
     DetailedChecker detailed;
     
     int mode;
-    cout << "========= Cyclic Code Generator Checker (GF(2)) =========\n";
-    cout << "SELECT CHECKER MODE:\n";
-    cout << "1. Simple Checker (Fast Output: YES/NO)\n";
-    cout << "2. Detailed Checker (Line-by-line Modulo)\n";
-    cout << "===========================================\n";
-    cout << "Enter your choice (1 or 2): ";
-    cin >> mode;
-
-    int l, k;
-    string s;
-
-    cout << "\n[Ready] System is running in Mode " << (mode == 1 ? "SIMPLE" : "DETAILED") << "\n\n";
-
     while (true) {
+        cout << "================= Cyclic Code Generator Checker (GF(2)) =================\n";
+        cout << "SELECT CHECKER MODE:\n";
+        cout << "1. Simple Checker (Fast Output: YES/NO)\n";
+        cout << "2. Detailed Checker (Line-by-line Modulo)\n";
+        cout << "3. Exit\n";
+        cout << "=========================================================================\n";
+        cout << "Enter your choice (1|2|3): ";
+        cin >> mode;
+
+        if (mode == 3) break;
+        int l, k;
+        string s;
+        cout << "\n" << endl;
+        cout << "--------------------------------------------------------------------------\n";
+        cout << "[Ready] System is running in Mode " << (mode == 1 ? "SIMPLE" : "DETAILED") << "\n";
         cout << "Enter l and k for C(l,k): ";
         cin >> l >> k;
         
@@ -192,6 +185,7 @@ int main() {
         } else if (mode == 2) {
             detailed.check(l, k, s);
         }
+        cout << "--------------------------------------------------------------------------\n";
         cout << "\n";
     }
 
