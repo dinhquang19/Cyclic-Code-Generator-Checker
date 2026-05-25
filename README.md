@@ -108,7 +108,7 @@ Màn hình sẽ hiển thị chính xác các bước như sau:
 ```
 ## 7. Logic thiết kế bộ dữ liệu thử nghiệm (Tests)
 
-Bộ test gồm 20 trường hợp, được chia thành 4 nhóm:
+Bộ test kiểm tra nhanh (YES/NO) với quy mô lớn bao gồm 20 trường hợp, được chia thành 4 nhóm:
 
 ### Nhóm 1: Kiểm thử cơ bản (Small Cases)
 * **Mục tiêu:** Xác minh các kiến thức nền tảng về Lý thuyết mã hóa.
